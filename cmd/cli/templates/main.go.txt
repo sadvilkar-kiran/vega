@@ -1,0 +1,22 @@
+package main
+
+import (
+	"${APP_NAME}/data"
+	"${APP_NAME}/handlers"
+	"${APP_NAME}/middleware"
+
+	"github.com/sadvilkar-kiran/vega"
+)
+
+type application struct {
+	App        *vega.Vega
+	Handlers   *handlers.Handlers
+	Models     data.Models
+	Middleware *middleware.Middleware
+}
+
+func main() {
+	app := initApplication()
+	app.App.ListenAndServe()
+}
+

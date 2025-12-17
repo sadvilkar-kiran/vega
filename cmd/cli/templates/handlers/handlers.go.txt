@@ -1,0 +1,51 @@
+package handlers
+
+import (
+	"net/http"
+
+	"github.com/sadvilkar-kiran/vega"
+	"github.com/sadvilkar-kiran/vega/render"
+)
+
+type Handlers struct {
+	App    *vega.Vega
+	Models interface{}
+}
+
+func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
+	err := h.App.Render.Page(w, r, "home", nil, nil)
+	if err != nil {
+		h.App.ErrorLog.Println(err)
+	}
+}
+
+func (h *Handlers) GoPage(w http.ResponseWriter, r *http.Request) {
+	err := h.App.Render.GoPage(w, r, "home", nil)
+	if err != nil {
+		h.App.ErrorLog.Println(err)
+	}
+}
+
+func (h *Handlers) JetPage(w http.ResponseWriter, r *http.Request) {
+	err := h.App.Render.JetPage(w, r, "home", nil, nil)
+	if err != nil {
+		h.App.ErrorLog.Println(err)
+	}
+}
+
+func (h *Handlers) SessionTest(w http.ResponseWriter, r *http.Request) {
+	h.App.Session.Put(r.Context(), "foo", "bar")
+	val := h.App.Session.GetString(r.Context(), "foo")
+
+	td := &render.TemplateData{
+		StringMap: map[string]string{
+			"foo": val,
+		},
+	}
+
+	err := h.App.Render.Page(w, r, "sessions", nil, td)
+	if err != nil {
+		h.App.ErrorLog.Println(err)
+	}
+}
+

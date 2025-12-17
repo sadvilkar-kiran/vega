@@ -1,0 +1,14 @@
+{{extends "layouts/base.jet"}}
+
+{{block body()}}
+<div>
+    <h1>Jet Template Example</h1>
+    <p>This is a Jet template demonstration.</p>
+    <p>Framework: <strong>Vega</strong></p>
+    <p>Template Engine: <strong>Jet</strong></p>
+    <p class="success">✅ Jet templates are working!</p>
+    <hr>
+    <a href="/">← Back to Home</a>
+</div>
+{{end}}
+

@@ -1,0 +1,18 @@
+package middleware
+
+import (
+	"net/http"
+
+	"github.com/sadvilkar-kiran/vega"
+)
+
+type Middleware struct {
+	App    *vega.Vega
+	Models interface{}
+}
+
+func (m *Middleware) CheckRemember(next http.Handler) http.Handler {
+	// Add remember me functionality here if needed
+	return next
+}
+

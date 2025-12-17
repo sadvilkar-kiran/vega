@@ -1,0 +1,12 @@
+{{extends "layouts/base.jet"}}
+
+{{block body()}}
+<div>
+    <h1>Session Test</h1>
+    <p>Session value for 'foo': <strong>{{.foo}}</strong></p>
+    <p class="success">✅ Session is working!</p>
+    <hr>
+    <a href="/">← Back to Home</a>
+</div>
+{{end}}
+

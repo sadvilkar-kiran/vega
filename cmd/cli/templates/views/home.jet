@@ -1,0 +1,37 @@
+{{extends "layouts/base.jet"}}
+
+{{block body()}}
+<div class="container">
+    <h1>Welcome to Vega Framework! 🚀</h1>
+    <p>Framework: <strong>Vega</strong></p>
+    <p>Version: <strong>{{.Version}}</strong></p>
+    <p>Server: <strong>{{.ServerName}}</strong></p>
+    <p>Port: <strong>{{.Port}}</strong></p>
+    
+    <hr>
+    
+    <h2>Framework Features</h2>
+    <ul>
+        <li>✅ Fast Routing with Chi</li>
+        <li>✅ Session Management</li>
+        <li>✅ Template Rendering (Jet & Go)</li>
+        <li>✅ Database Support</li>
+        <li>✅ Caching (Redis/Badger)</li>
+        <li>✅ Email Support</li>
+        <li>✅ Form Validation</li>
+        <li>✅ Security Features</li>
+    </ul>
+    
+    <hr>
+    
+    <h2>Test Routes</h2>
+    <ul>
+        <li><a href="/json">JSON Response</a></li>
+        <li><a href="/xml">XML Response</a></li>
+        <li><a href="/sessions">Session Test</a></li>
+        <li><a href="/crypto">Encryption Test</a></li>
+        <li><a href="/cache-test">Cache Test</a></li>
+    </ul>
+</div>
+{{end}}
+

@@ -1,0 +1,36 @@
+{{extends "layouts/base.jet"}}
+
+{{block body()}}
+<div>
+    <h1>Form Validation Test</h1>
+    {{if .Error}}
+        <p style="color: red;">{{.Error}}</p>
+    {{end}}
+    {{if .Flash}}
+        <p style="color: green;">{{.Flash}}</p>
+    {{end}}
+    <form method="POST" action="/form">
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+        <div style="margin: 10px 0;">
+            <label>First Name:</label><br>
+            <input type="text" name="first_name" required style="width: 300px; padding: 5px;">
+        </div>
+        <div style="margin: 10px 0;">
+            <label>Last Name:</label><br>
+            <input type="text" name="last_name" required style="width: 300px; padding: 5px;">
+        </div>
+        <div style="margin: 10px 0;">
+            <label>Email:</label><br>
+            <input type="email" name="email" required style="width: 300px; padding: 5px;">
+        </div>
+        <div style="margin: 10px 0;">
+            <label>Age:</label><br>
+            <input type="number" name="age" required style="width: 300px; padding: 5px;">
+        </div>
+        <button type="submit" style="padding: 10px 20px; background: #0066FF; color: white; border: none; cursor: pointer;">Submit</button>
+    </form>
+    <hr>
+    <a href="/">← Back to Home</a>
+</div>
+{{end}}
+

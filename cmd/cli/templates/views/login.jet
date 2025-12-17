@@ -1,0 +1,33 @@
+{{extends "layouts/base.jet"}}
+
+{{block body()}}
+<div>
+    <h1>Login</h1>
+    {{if .Flash}}
+        <p style="color: green;">{{.Flash}}</p>
+    {{end}}
+    {{if .Error}}
+        <p style="color: red;">{{.Error}}</p>
+    {{end}}
+    <form method="POST" action="/users/login">
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+        <div style="margin: 10px 0;">
+            <label>Email:</label><br>
+            <input type="email" name="email" required style="width: 300px; padding: 5px;">
+        </div>
+        <div style="margin: 10px 0;">
+            <label>Password:</label><br>
+            <input type="password" name="password" required style="width: 300px; padding: 5px;">
+        </div>
+        <div style="margin: 10px 0;">
+            <label>
+                <input type="checkbox" name="remember" value="1"> Remember me
+            </label>
+        </div>
+        <button type="submit" style="padding: 10px 20px; background: #0066FF; color: white; border: none; cursor: pointer;">Login</button>
+    </form>
+    <hr>
+    <a href="/users/forgot-password">Forgot Password?</a> | <a href="/">← Back to Home</a>
+</div>
+{{end}}
+

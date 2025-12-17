@@ -1,0 +1,25 @@
+{{extends "layouts/base.jet"}}
+
+{{block body()}}
+<div>
+    <h1>Forgot Password</h1>
+    {{if .Error}}
+        <p style="color: red;">{{.Error}}</p>
+    {{end}}
+    {{if .Flash}}
+        <p style="color: green;">{{.Flash}}</p>
+    {{end}}
+    <p>Enter your email address and we'll send you a password reset link.</p>
+    <form method="POST" action="/users/forgot-password">
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+        <div style="margin: 10px 0;">
+            <label>Email:</label><br>
+            <input type="email" name="email" required style="width: 300px; padding: 5px;">
+        </div>
+        <button type="submit" style="padding: 10px 20px; background: #0066FF; color: white; border: none; cursor: pointer;">Send Reset Link</button>
+    </form>
+    <hr>
+    <a href="/users/login">← Back to Login</a>
+</div>
+{{end}}
+

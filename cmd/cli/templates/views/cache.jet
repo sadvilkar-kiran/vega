@@ -1,0 +1,55 @@
+{{extends "layouts/base.jet"}}
+
+{{block body()}}
+<div>
+    <h1>Cache Test</h1>
+    <p>Test cache operations (Redis or Badger)</p>
+    
+    <div style="margin: 20px 0;">
+        <h3>Save to Cache</h3>
+        <input type="text" id="cacheKey" placeholder="Key" style="padding: 5px; width: 200px;">
+        <input type="text" id="cacheValue" placeholder="Value" style="padding: 5px; width: 200px;">
+        <button onclick="saveToCache()" style="padding: 5px 15px; background: #28a745; color: white; border: none; cursor: pointer;">Save</button>
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h3>Get from Cache</h3>
+        <input type="text" id="getKey" placeholder="Key" style="padding: 5px; width: 200px;">
+        <button onclick="getFromCache()" style="padding: 5px 15px; background: #0066FF; color: white; border: none; cursor: pointer;">Get</button>
+        <div id="cacheResult" style="margin-top: 10px;"></div>
+    </div>
+    
+    <script>
+        const csrfToken = "{{.CSRFToken}}";
+        
+        function saveToCache() {
+            const key = document.getElementById('cacheKey').value;
+            const value = document.getElementById('cacheValue').value;
+            fetch('/api/save-in-cache', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({name: key, value: value, csrf_token: csrfToken})
+            }).then(r => r.json()).then(data => {
+                alert(data.message);
+            });
+        }
+        
+        function getFromCache() {
+            const key = document.getElementById('getKey').value;
+            fetch('/api/get-from-cache', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({name: key, csrf_token: csrfToken})
+            }).then(r => r.json()).then(data => {
+                document.getElementById('cacheResult').innerHTML = 
+                    data.error ? '<span style="color:red;">' + data.message + '</span>' : 
+                    '<span style="color:green;">Value: ' + data.value + '</span>';
+            });
+        }
+    </script>
+    
+    <hr>
+    <a href="/">← Back to Home</a>
+</div>
+{{end}}
+

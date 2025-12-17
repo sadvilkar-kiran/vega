@@ -280,11 +280,14 @@ func (v *Vega) startLoggers() (*log.Logger, *log.Logger) {
 
 func (v *Vega) createRenderer() {
 	myRenderer := render.Render{
-		Renderer: v.config.renderer,
-		RootPath: v.RootPath,
-		Port:     v.config.port,
-		JetViews: v.JetViews,
-		Session:  v.Session,
+		Renderer:   v.config.renderer,
+		RootPath:   v.RootPath,
+		Secure:     v.Server.Secure,
+		Port:       v.Server.Port,
+		ServerName: v.Server.ServerName,
+		Version:    v.Version,
+		JetViews:   v.JetViews,
+		Session:    v.Session,
 	}
 	v.Render = &myRenderer
 }

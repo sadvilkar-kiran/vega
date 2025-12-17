@@ -20,6 +20,7 @@ type Render struct {
 	Secure     bool
 	Port       string
 	ServerName string
+	Version    string
 	JetViews   *jet.Set
 	Session    *scs.SessionManager
 }
@@ -35,6 +36,7 @@ type TemplateData struct {
 	Port            string
 	ServerName      string
 	Secure          bool
+	Version         string
 	Error           string
 	Flash           string
 }
@@ -44,6 +46,7 @@ func (c *Render) defaultData(td *TemplateData, r *http.Request) *TemplateData {
 	td.ServerName = c.ServerName
 	td.CSRFToken = nosurf.Token(r)
 	td.Port = c.Port
+	td.Version = c.Version
 	if c.Session.Exists(r.Context(), "userID") {
 		td.IsAuthenticated = true
 	}

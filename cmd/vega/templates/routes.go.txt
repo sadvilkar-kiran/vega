@@ -16,6 +16,16 @@ func (a *application) routes() *chi.Mux {
 	a.App.Routes.Get("/jet-page", a.Handlers.JetPage)
 	a.App.Routes.Get("/sessions", a.Handlers.SessionTest)
 
+	// API routes
+	a.App.Routes.Get("/json", a.Handlers.JSON)
+	a.App.Routes.Get("/xml", a.Handlers.XML)
+	a.App.Routes.Get("/crypto", a.Handlers.TestCrypto)
+
+	// Cache routes
+	a.App.Routes.Get("/cache-test", a.Handlers.ShowCachePage)
+	a.App.Routes.Post("/api/save-in-cache", a.Handlers.SaveInCache)
+	a.App.Routes.Post("/api/get-from-cache", a.Handlers.GetFromCache)
+
 	// static routes
 	fileServer := http.FileServer(http.Dir("./public"))
 	a.App.Routes.Handle("/public/*", http.StripPrefix("/public", fileServer))

@@ -19,8 +19,20 @@ Vega is a high-performance Go web framework designed for rapid application devel
 
 ## Installation
 
+### Framework
 ```bash
 go get github.com/sadvilkar-kiran/vega
+```
+
+### CLI Tool
+```bash
+go install github.com/sadvilkar-kiran/vega/cmd/vega@latest
+```
+
+After installation, you can use the `vega` command:
+```bash
+vega new myapp
+vega help
 ```
 
 ## Quick Start

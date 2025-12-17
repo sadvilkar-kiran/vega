@@ -2,15 +2,13 @@ module ${APP_NAME}
 
 go 1.21
 
-replace github.com/sadvilkar-kiran/vega => ../vega
-
 require (
 	github.com/CloudyKit/jet/v6 v6.2.0
 	github.com/go-chi/chi/v5 v5.0.11
 	github.com/jackc/pgconn v1.14.1
 	github.com/jackc/pgx/v5 v5.5.1
 	github.com/justinas/nosurf v1.1.1
-	github.com/sadvilkar-kiran/vega v0.0.0
+	github.com/sadvilkar-kiran/vega v1.0.0
 	github.com/upper/db/v4 v4.10.0
 	golang.org/x/crypto v0.17.0
 )
